@@ -1,0 +1,15 @@
+version '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins # jenkins image which was downloaded
+    ports:
+      - "8080:8080" # map container to port 8080
+    Volumes: # host-volume map it to container as below
+      - "$PWD/jenkins_home:/var/jenkins_home "
+#asking docker to save files in "$PWD/jenkins_home whatever it writes to :/var/jenkins_home
+    networks:
+      - net
+networks:
+  net: #including above jenkins service within networks
+  
